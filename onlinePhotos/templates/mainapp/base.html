@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>(●'◡'●)v</title>
+        <!--templates/myapp/users/index.html-->
+    </head>
+    <style>
+        .header{
+            text-align: center;
+        }
+        .header>table{
+            width: 800px;
+            margin: 60px auto;
+            border-radius: 5px;
+        }
+        .header .greyTr{
+            background-color: rgb(228, 228, 228);
+            padding: 5px;
+            border-radius: 5px 5px 0 0;
+        }
+        .header td{
+            background-color: rgb(203, 252, 255);
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        .header td a{
+            background-color: rgb(230, 203, 255);
+            text-decoration: none;
+            margin-left: 5px;
+            color: black;
+        }
+        .header td a:hover{
+            background-color: rgb(247, 185, 185);
+        }
+        .header .headera{
+            background-color: rgb(230, 203, 255);
+            text-decoration: none;
+            color: black;
+            border-radius: 3px;
+            padding: 5px;
+        }
+        .header .headera:hover{
+            background-color: rgb(247, 185, 185);
+        }
+    </style>
+    <body>
+        <section class="header">        
+            <h2>vezzzing的云相册(●'◡'●)v</h2>
+            <h3>{% block title %}标题{% endblock %}</h3>
+            <br>
+            <a class="headera" href="{% url 'indexphotos' 1 %}">浏览信息</a>
+            <a class="headera" href="{% url 'addphotopage' %}">添加信息</a>
+
+                {% block content %}
+                此处为内容预留区域
+                {% endblock %}
+        </section>
+    </body>
+</html>

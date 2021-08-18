@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>用户信息</title>
+        <!--templates/myapp/users/index.html-->
+    </head>
+    <style>
+        .header{
+            text-align: center;
+        }
+        .header table{
+            width: 800px;
+            margin: 60px auto;
+            border-radius: 5px;
+        }
+        .header .greyTr{
+            background-color: rgb(230, 203, 255);
+            padding: 5px;
+            border-radius: 5px 5px 0 0;
+        }
+        .header td{
+            background-color: rgb(203, 252, 255);
+            padding: 5px;
+        }
+        .header .headera{
+            background-color: rgb(230, 203, 255);
+            text-decoration: none;
+            color: black;
+            border-radius: 3px;
+            padding: 5px;
+        }
+        .header .headera:hover{
+            background-color: rgb(247, 185, 185);
+        }
+        .header .txtin{
+            background-color: rgb(255, 255, 255);
+            border: none;
+            outline: none;
+        }
+        .header .button{
+            background-color: rgb(230, 203, 255);
+            width: 47%;
+            padding: 5px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+        }
+        .header .button:hover{
+            background-color: rgb(247, 185, 185);
+        }
+    </style>
+    <body>
+        <section class="header">        
+            <h2>用户信息管理</h2>
+            <h3>修改用户信息</h3>
+
+            <br>
+            <a class="headera" href="{% url 'indexusers' %}">浏览信息</a>
+            <a class="headera" href="{% url 'addusers' %}">添加信息</a>
+            <form action="{% url 'updateusers' %}" method="POST">
+                {% csrf_token %}
+                <input name="id" type="hidden" value={{user.id}}>
+                <table>
+                    <tr>
+                        <th class="greyTr">姓名</th>
+                        <th class="greyTr">年龄</th>
+                        <th class="greyTr">电话</th>
+                    </tr>
+                    <tr>
+                        <td><input class="txtin" type="text" name="name" value={{user.name}}></td>
+                        <td><input class="txtin" type="text" name="age" value={{user.age}}></td>
+                        <td><input class="txtin" type="text" name="phone" value={{user.phone}}></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <input class="button" type="submit" value="修改">
+                            <input class="button" type="reset" value="重置">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </section>
+    </body>
+</html>

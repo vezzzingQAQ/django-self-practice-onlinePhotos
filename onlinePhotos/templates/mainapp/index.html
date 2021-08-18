@@ -1,0 +1,36 @@
+{% extends "mainapp/base.html" %}
+{% block title %}
+浏览列表
+{% endblock %}
+
+{% block content %}
+<table>
+    <tr>
+        <th class="greyTr">ID</th>
+        <th class="greyTr">标题</th>
+        <th class="greyTr">关于</th>
+        <th class="greyTr">图片</th>
+        <th class="greyTr">添加时间</th>
+    </tr>
+    {% for photo in photosList %}
+        <tr>
+            <td>{{photo.id}}</td>
+            <td>{{photo.title}}</td>
+            <td>{{photo.about}}</td>
+            <td><img src="/static/mainapp/pics_sized/{{photo.fileName}}" alt="出错啦"></td>
+            <td>{{photo.time}}</td>
+        </tr>
+    {% endfor %}
+</table>
+<a class="page" href="{% url 'indexphotos' currentPage|add:-1 %}">上一页</a>
+{% for p in pagesList %}
+    {% if currentPage == p %}
+        <a class="page currentPage" href="{% url 'indexphotos' p %}">{{ p }}</a>
+    {% else %}
+        <a class="page" href="{% url 'indexphotos' p %}">{{ p }}</a>
+    {% endif %}
+{% endfor %}
+<a class="page" href="{% url 'indexphotos' currentPage|add:1 %}">下一页</a>
+
+{% endblock %}
+
